@@ -20,6 +20,23 @@ class Traveler(db.Model):
     # budget - Integer
     # frequent_flyer - Boolean
 
+    __tablenmae__ = "traveler_table"
+
+    id = db.Column ( db.Integer, primary_key = True)
+    name = db.Column ( db.String, unique =True )
+    age = db.Column ( db.Integer )
+    budget = db.Column ( db.Integer )
+    frequent_flyer = db.Column ( db.Boolean, default=False)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "age": self.age,
+            "budget": self.budget,
+            "frequent_flyer": self.frequent_flyer
+        }
+
 class Island(db.Model):
     pass
 
@@ -29,3 +46,18 @@ class Island(db.Model):
     # name - String - required and unique
     # square_miles - Integer
     # average_temperature - Integer
+
+    __tablename__ = "island_table"
+
+    id = db.Column ( db.Integer, primary_key = True )
+    name = db.Column ( db.String, unique = True )
+    square_miles = db.Column ( db.Integer ) 
+    average_temperature = db.Column ( db.Integer )
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "square_miles": self.square_miles,
+            "average_temperature": self.average_temperature
+        }
